@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Loan Approval Prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+  }
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+  .jumbotron {
+    background-color: dodgerblue;
+    color: ghostwhite;
+    padding: 70px 25px;
+    text-transform: uppercase;
+    font-family: Montserrat, sans-serif;
+      font-size: 50px;
+
+  }
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  .bg-grey {
+    background-color: dodgerblue;
+    color: ghostwhite;
+
+  }
+  .logo {
+    color: #0073e6;
+    font-size: 200px;
+  }
+  label{
+  	font-size: 20px;
+  	color: #0073e6;
+  }
+  input{
+  width:180px;
+  	border: none;
+  	border-bottom: 2px solid #0073e6;
+  }
+  select{
+    width:180px;
+  	border: none;
+  	border-bottom: 2px solid #0073e6;
+  }
+  button{
+  	background-color: #0073e6;
+  	color: white;
+  	border-radius: 5px;
+  	border-color: white;
+  }
+  footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #0060e6;
+  }
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<div class="jumbotron text-center">
+
+
+  <b>Loan Approval Prediction</b>
+
+</div>
+
+<h2 align="center" style="color: #0073e6;">Enter the below details</h2><br>
+<div class="container" align="center">
+	<form action='/predict' method="post">
+		<div class="row" >
+			<div class="col-sm-4">
+      <label for="Gender">Gender</label>
+          <br>
+        <select id="Gender" name="Gender">
+            <option ></option>
+  <option value="1">Male</option>
+  <option value="0">Female</option>
+        </select>
+    </div>
+    <div class="col-sm-4" >
+      <label for="Married">Married:</label>
+      <br>
+<select id="Married" name="Married">
+    <option ></option>
+  <option value="0">No</option>
+  <option value="1">Yes</option>
+</select>
+    </div>
+    <div class="col-sm-4" >
+     <label for="Dependents">Dependents:</label>
+      <br>
+<select id="Dependents" name="Dependents">
+    <option ></option>
+  <option value="1">Yes</option>
+  <option value="0">No</option>
+
+</select>
+    </div>
+  </div>
+      <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <label><b>Education</b></label>
+          <br>
+        <select id="Education" name="Education">
+            <option ></option>
+  <option value="1">Graduate</option>
+  <option value="0">Not Graduate</option>
+            </select>
+    </div>
+    <div class="col-sm-4" >
+      <label ><b>Self_Employed</b></label>
+            <br>
+          <select id="Self_Employed" name="Self_Employed">
+              <option ></option>
+  <option value="1">Yes</option>
+  <option value="0">No</option>
+            </select>
+    </div>
+    <div class="col-sm-4" >
+      <label><b>ApplicantIncome</b></label>
+            <br>
+          <input id="ApplicantIncome" name="ApplicantIncome" placeholder="" type="text">
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-sm-4">
+      <label><b>CoapplicantIncome</b></label>
+          <br>
+        <input placeholder="" name="CoapplicantIncome" id="CoapplicantIncome" type="text">
+    </div>
+    <div class="col-sm-4" >
+      <label ><b>LoanAmount</b></label>
+            <br>
+         <input id="LoanAmount" name="LoanAmount" placeholder=""  type="text" >
+    </div>
+    <div class="col-sm-4" >
+      <label for="Loan_Amount_Term">Loan_Amount_Term</label>
+        <br>
+        <input id="Loan_Amount_Term" name="Loan_Amount_Term" placeholder=""  type="text" >
+      <br>
+
+
+    </div>
+<br>
+  </div>
+        <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <label><b>Credit_History</b></label>
+          <br>
+        <select id="Credit_History" name="Credit_History">
+            <option ></option>
+  <option value="0">No</option>
+  <option value="1">Yes</option>
+            </select>
+    </div>
+      <div class="col-sm-4" >
+
+  </div>
+    <div class="col-sm-4" >
+      <label><b>Property_Area</b></label>
+          <br>
+        <select id="Property_Area" name="Property_Area">
+            <option ></option>
+  <option value="3">Urban</option>
+  <option value="2">Semiurban</option>
+  <option value="1">Rural</option>
+            </select>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="row center">
+          <button type="submit">Predict Probability</button>
+   </div>
+</form>
+<br><br>
+<div class="row" align="center">
+	<label style=" font-size: 50px; color: #0073e6;">{{pred}}</label>
+</div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact Me.</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> jyothik.18bcn7090@vitap.ac.in</p>
+
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+</footer>
+
+</body>
+</html>
