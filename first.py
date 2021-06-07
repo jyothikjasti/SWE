@@ -6,7 +6,7 @@ from imblearn.over_sampling import SMOTE
 import pickle
 
 # reading the files
-train=pd.read_csv("https://raw.githubusercontent.com/Chandu0312/loan_prediction/master/train.csv")
+train=pd.read_csv("https://raw.githubusercontent.com/jyothikjasti/SWE/main/train.csv")
 train.replace(
     to_replace=['Yes', 'Male','Graduate','Y'],
     value=1,
